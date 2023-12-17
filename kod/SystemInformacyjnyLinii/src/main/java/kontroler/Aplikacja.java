@@ -1,16 +1,17 @@
-package systeminformacyjny;
+package kontroler;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import systeminformacyjny.model.Przystanek;
-import systeminformacyjny.model.Uzytkownik;
-import systeminformacyjny.model.Linia;
-import systeminformacyjny.model.RozkladJazdyPrzystanku;
-import systeminformacyjny.model.RozkladJazdyLinii;
-import systeminformacyjny.model.RozkladJazdyKursu;
-import systeminformacyjny.model.Trasa;
-import systeminformacyjny.model.Kurs;
+import model.Przystanek;
+import model.Uzytkownik;
+import model.Linia;
+import model.RozkladJazdyPrzystanku;
+import model.RozkladJazdyLinii;
+import model.RozkladJazdyKursu;
+import model.Trasa;
+import model.Kurs;
+import model.Opoznienie;
 
 class Aplikacja {
     private List<Przystanek> przystanki = new ArrayList<>();
@@ -107,6 +108,23 @@ class Aplikacja {
             }
         }
         return listaTras;
+    }
+    
+    public void aktualizujOpoznienie(int idLinii, int idKursu, int nowaWartosc) {
+        for(Linia linia : linie) {
+            int idLinii1 = linia.getId();
+            if(idLinii == idLinii1) {
+                List<Kurs> kursy = linia.getKursy();
+                for(Kurs kurs : kursy) {
+                    int idKursu1 = kurs.getIdKursu();
+                    if(idKursu == idKursu1) {
+                        Opoznienie opoznienie = kurs.getOpoznienie();
+                        opoznienie.setWartosc(nowaWartosc);
+                        return;
+                    }
+                }
+            }
+        }
     }
     
     public static void main(String[] args) {

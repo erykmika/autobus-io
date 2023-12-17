@@ -1,4 +1,6 @@
-package systeminformacyjny.model;
+package model;
+
+import model.RozkladJazdyPrzystanku;
 
 
 public class Przystanek {

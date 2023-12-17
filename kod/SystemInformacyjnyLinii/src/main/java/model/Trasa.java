@@ -1,4 +1,4 @@
-package systeminformacyjny.model;
+package model;
 
 public class Trasa {
     private int godzinaOdjazdu;
