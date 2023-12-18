@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Kurs {
     private int idKursu;
-    private Opoznienie opoznienie;
+    private Opoznienie opoznienie = new Opoznienie();
     private List<Utrudnienie> utrudnienia = new ArrayList<>();
-    private RozkladJazdyKursu rozkladJazdy;
+    private RozkladJazdyKursu rozkladJazdy = new RozkladJazdyKursu();
     
     public int getIdKursu() {
         return idKursu;

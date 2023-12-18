@@ -7,7 +7,7 @@ public class Linia {
     private int id;
     private List<Przystanek> przystanki = new ArrayList<>();
     private List<Kurs> kursy = new ArrayList<>();
-    private RozkladJazdyLinii rozkladJazdy;
+    private RozkladJazdyLinii rozkladJazdy = new RozkladJazdyLinii();
     
     
     public int getId() {
