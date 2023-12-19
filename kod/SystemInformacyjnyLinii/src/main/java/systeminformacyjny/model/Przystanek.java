@@ -1,6 +1,6 @@
-package model;
+package systeminformacyjny.model;
 
-import model.RozkladJazdyPrzystanku;
+import systeminformacyjny.model.RozkladJazdyPrzystanku;
 
 
 public class Przystanek {

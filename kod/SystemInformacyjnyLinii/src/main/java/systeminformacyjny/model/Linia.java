@@ -1,4 +1,4 @@
-package model;
+package systeminformacyjny.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,6 @@ public class Linia {
         this.przystanki = przystanki;
     }
 
-    
     public List<Kurs> getKursy() {
         return kursy;
     }

@@ -9,6 +9,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
-        <exec.mainClass>kontroler.Aplikacja</exec.mainClass>
+        <exec.mainClass>systeminformacyjny.kontroler.Aplikacja</exec.mainClass>
     </properties>
 </project>
