@@ -100,7 +100,7 @@ class Aplikacja {
                     for (Przystanek przystanek2 : przystanki) {
 
                         nazwa2 = przystanek2.getNazwa();
-                        if (przystanekDocelowy.equals(nazwa1)) {
+                        if (przystanekDocelowy.equals(nazwa2)) {
 
                             int idxKoncowy = przystanki.indexOf(przystanekDocelowy);
                             if (idxPoczatkowy < idxKoncowy) {
@@ -190,7 +190,7 @@ class Aplikacja {
                     int idKursu1 = kurs.getIdKursu();
                     if (idKursu == idKursu1) {
                         List<Utrudnienie> utrudnienia = kurs.getUtrudnienia();
-                        Utrudnienie utrudnienie = utrudnienia.remove(indeksUtrudnienia);
+                        utrudnienia.remove(indeksUtrudnienia);
                         return;
                     }
                 }
