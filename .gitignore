@@ -1,2 +1,4 @@
 *.bak_*
 /kod/SystemInformacyjnyLinii/target/
+/kod/Testy_SystemInformacynyMaven/nbproject/
+/kod/Testy_SystemInformacynyMaven/target/
