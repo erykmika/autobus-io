@@ -19,26 +19,18 @@ public class Dane {
     new RozkladJazdyKursu()
     };
     
+    public static List<List<Integer>> godziny = new ArrayList<>();
     
-    public static List<List<Integer>> lista2D = new ArrayList<>();
-    
+    // Statyczna inicjalizacja pol
     static {
         // Dodawanie wierszy do listy 2D
-        lista2D.add(List.of(1, 2, 3, 4, 5));
-        lista2D.add(List.of(6, 7, 8, 9, 10));
-        lista2D.add(List.of(11, 12, 13, 14, 15));
-        lista2D.add(List.of(13, 14, 16, 17, 18));
-
-        // Wyświetlanie listy 2D
-        for (List<Integer> wiersz : lista2D) {
-            for (Integer liczba : wiersz) {
-                System.out.print(liczba + " ");
-            }
-            System.out.println();
-        }
+        godziny.add(List.of(1, 2, 3, 4, 5));
+        godziny.add(List.of(6, 7, 8, 9, 10));
+        godziny.add(List.of(11, 12, 13, 14, 15));
+        godziny.add(List.of(13, 14, 16, 17, 18));
         
         for(int i=0; i<4; i++) {
-            rozklady[i].setGodziny(lista2D.get(i));
+            rozklady[i].setGodziny(godziny.get(i));
         }
     }
 }

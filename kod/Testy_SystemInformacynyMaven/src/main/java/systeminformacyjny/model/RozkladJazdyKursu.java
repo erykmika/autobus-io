@@ -11,6 +11,9 @@ public class RozkladJazdyKursu {
         return godziny;
     }
     public void setGodziny(List<Integer> godziny) {
+        if(godziny.size() == 0) {
+            throw new IllegalArgumentException();
+        }
         this.godziny = godziny;
     }
 }
