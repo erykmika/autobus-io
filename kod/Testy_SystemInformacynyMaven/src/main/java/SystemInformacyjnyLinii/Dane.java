@@ -21,6 +21,17 @@ public class Dane {
     
     public static List<List<Integer>> godziny = new ArrayList<>();
     
+    
+    
+    public static RozkladJazdyLinii rozkladyLinia[] = {
+    new RozkladJazdyLinii(),
+    new RozkladJazdyLinii()
+    };
+    
+    public static List<List<RozkladJazdyKursu>> rKurs = new ArrayList<>();
+    
+    
+    
     // Statyczna inicjalizacja pol
     static {
         // Dodawanie wierszy do listy 2D
@@ -32,5 +43,14 @@ public class Dane {
         for(int i=0; i<4; i++) {
             rozklady[i].setGodziny(godziny.get(i));
         }
+        
+        //Korzystam z tego wyzej; 'aa' to zmienic na normalna nazwe
+        List<RozkladJazdyKursu> aa = new ArrayList<>();
+        aa.addAll(Arrays.asList(rozklady));
+        rKurs.add(aa);
+        Collections.reverse(aa);
+        rKurs.add(aa);
+        rozkladyLinia[0].setRozkladyKursow(rKurs.get(0));
+        rozkladyLinia[1].setRozkladyKursow(rKurs.get(1));
     }
 }

@@ -20,21 +20,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import java.util.stream.Stream;
 import java.util.stream.IntStream;
-
 /**
  *
- * @author erykm
+ * @author Michal
  */
 @Tag("Entity")
-public class RozkladJazdyKursuTest implements TestExecutionExceptionHandler {
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class RozkladJazdyLiniiTest implements TestExecutionExceptionHandler {
+    
     Dane dane;
-
-    // Obsluga wyjatku - ustawienie pustej listy godzin
+    
     @Override
     public void handleTestExecutionException(ExtensionContext context, Throwable throwable)
             throws Throwable {
@@ -44,76 +46,84 @@ public class RozkladJazdyKursuTest implements TestExecutionExceptionHandler {
             throw throwable;
         }
     }
-
-    public RozkladJazdyKursuTest() {
+    
+    public RozkladJazdyLiniiTest() {
     }
-
+    
     @BeforeAll
     public static void setUpClass() {
     }
-
+    
     @AfterAll
     public static void tearDownClass() {
     }
-
+    
     @BeforeEach
     public void setUp() {
         dane = new Dane();
     }
-
+    
     @AfterEach
     public void tearDown() {
     }
 
     /**
-     * Test of getGodziny method, of class RozkladJazdyKursu.
+     * Test of getRozkladyKursow method, of class RozkladJazdyLinii.
      */
+    
     @Test
-    public void testGetGodziny() {
-        System.out.println("getGodziny");
-        RozkladJazdyKursu instance = Dane.rozklady[0];
-        List<Integer> expResult = Dane.godziny.get(0);
-        List<Integer> result = instance.getGodziny();
+    @Order(2)
+    public void testGetRozkladyKursow() {
+        System.out.println("getRozkladyKursow");
+        RozkladJazdyLinii instance = Dane.rozkladyLinia[0];
+        List<RozkladJazdyKursu> expResult = Dane.rKurs.get(0);
+        List<RozkladJazdyKursu> result = instance.getRozkladyKursow();
         assertEquals(expResult, result);
     }
-
+    
     /**
-     * Test of setGodziny method, of class RozkladJazdyKursu.
+     * Test of setRozkladyKursow method, of class RozkladJazdyLinii.
      */
+    
     @Test
-    public void testSetGodziny() {
-        System.out.println("setGodziny");
-        List<Integer> godziny = Dane.godziny.get(1);
-        RozkladJazdyKursu instance = Dane.rozklady[1];
-        instance.setGodziny(godziny);
-        assertEquals(godziny, Dane.rozklady[1].getGodziny());
+    @Order(1)
+    public void testSetRozkladyKursow() {
+        System.out.println("setRozkladyKursow");
+        List<RozkladJazdyKursu> rozkladyKursow = Dane.rKurs.get(1);
+        RozkladJazdyLinii instance = Dane.rozkladyLinia[1];
+        instance.setRozkladyKursow(rozkladyKursow);
+        assertEquals(rozkladyKursow, Dane.rozkladyLinia[1].getRozkladyKursow());
     }
-
+    
     @ParameterizedTest
+    @Order(3)
     @MethodSource("provideArguments")
-    public void testMethodSource(RozkladJazdyKursu rozklady, List<Integer> godziny) {
+    public void testMethodSource(RozkladJazdyLinii rozkladyLinia, List<Integer> rKurs) {
         System.out.println("testMethodSource");
-        assertEquals(godziny, rozklady.getGodziny());
+        assertEquals(rKurs, rozkladyLinia.getRozkladyKursow());
     }
 
     static public Stream<Arguments> provideArguments() {
-        return IntStream.range(0, Dane.rozklady.length)
-                .mapToObj(index -> arguments(Dane.rozklady[index], Dane.godziny.get(index)));
+        return IntStream.range(0, Dane.rozkladyLinia.length)
+                .mapToObj(index -> arguments(Dane.rozkladyLinia[index], Dane.rKurs.get(index)));
     }
-    
+
     @Test
-    @ExtendWith(RozkladJazdyKursuTest.class)
+    @Order(5)
+    @ExtendWith(RozkladJazdyLiniiTest.class)
     public void testIfThrowsException()
     {
         System.out.println("testIfThrowsException");
-        List<Integer> pustaLista = new ArrayList<>();
-        Dane.rozklady[0].setGodziny(pustaLista);
+        List<RozkladJazdyKursu> pustaLista = new ArrayList<>(); 
+        Dane.rozkladyLinia[0].setRozkladyKursow(pustaLista);
     }
     
     @ParameterizedTest
-    @CsvSource({"3", "2", "0", "1"})
-    public void testGetGodzinyCsv(int liczba) {
+    @Order(4)
+    @CsvSource({"1", "0"})
+    public void testGetRozkladyKursowCsv(int liczba) {
         System.out.println("getWartoscCsv");
-        assertEquals(Dane.rozklady[liczba].getGodziny(), Dane.godziny.get(liczba));
+        assertEquals(Dane.rozkladyLinia[liczba].getRozkladyKursow(), Dane.rKurs.get(liczba));
     }
 }
+
