@@ -24,6 +24,7 @@ import org.junit.jupiter.params.provider.CsvSource;
  *
  * @author erykm
  */
+@Tag("Entity")
 public class OpoznienieTest {
     
     public OpoznienieTest() {

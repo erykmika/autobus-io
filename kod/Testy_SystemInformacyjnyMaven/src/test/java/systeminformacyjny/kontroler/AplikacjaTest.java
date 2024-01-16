@@ -95,6 +95,7 @@ private Kurs kursTestowy;
      * Test of pobierzRozkladJazdyLinii method, of class Aplikacja.
      */
     @Order(1)
+    @Tag("Rozklady")
     @ParameterizedTest
     @MethodSource("provideDataForPobierzRozkladJazdyLinii")
     void testPobierzRozkladJazdyLinii(int idLinii, RozkladJazdyLinii expectedRozkladJazdy) {
@@ -162,6 +163,7 @@ private Kurs kursTestowy;
      * Test of wyznaczTrase method, of class Aplikacja.
      */
     @Test
+    @Tag("Rozklady")
     public void testWyznaczTrase() {
         System.out.println("wyznaczTrase");
         String przystanekPoczatkowy = "Zielona";
