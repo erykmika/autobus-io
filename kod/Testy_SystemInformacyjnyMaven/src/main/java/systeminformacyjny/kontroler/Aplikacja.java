@@ -2,6 +2,7 @@ package systeminformacyjny.kontroler;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import systeminformacyjny.model.Przystanek;
 import systeminformacyjny.model.Uzytkownik;
@@ -31,22 +32,20 @@ class Aplikacja {
     public List<Uzytkownik> getUzytkownicy() {
         return uzytkownicy;
     }
-    
+
     public void setUzytkownicy(List<Uzytkownik> uzytkownicy) {
         this.uzytkownicy = uzytkownicy;
     }
-    
+
     public List<Linia> getLinie() {
         return linie;
     }
-    
+
     public void setLinie(List<Linia> linie) {
         this.linie = linie;
     }
 
-    
     // Metody przypadkow uzycia
-    
     public RozkladJazdyPrzystanku pobierzRozkladJazdyPrzystanku(String nazwaPrzystanku) {
         for (Przystanek przystanek : przystanki) {
             String nazwa = przystanek.getNazwa();
@@ -89,25 +88,30 @@ class Aplikacja {
         String nazwa2 = null;
 
         for (Linia linia : linie) {
+            // Lista obiektow Przystanek
             List<Przystanek> przystanki = linia.getPrzystanki();
+            // Lista nazw przystankow
+            List<String> nazwyPrzystankow = linia.getPrzystanki()
+                    .stream()
+                    .map(Przystanek::getNazwa)
+                    .collect(Collectors.toList());
 
             for (Przystanek przystanek1 : przystanki) {
                 nazwa1 = przystanek1.getNazwa();
 
                 if (przystanekPoczatkowy.equals(nazwa1)) {
-
-                    int idxPoczatkowy = przystanki.indexOf(przystanekPoczatkowy);
+                    int idxPoczatkowy = nazwyPrzystankow.indexOf(przystanekPoczatkowy);
                     for (Przystanek przystanek2 : przystanki) {
 
                         nazwa2 = przystanek2.getNazwa();
                         if (przystanekDocelowy.equals(nazwa2)) {
 
-                            int idxKoncowy = przystanki.indexOf(przystanekDocelowy);
+                            int idxKoncowy = nazwyPrzystankow.indexOf(przystanekDocelowy);
+
                             if (idxPoczatkowy < idxKoncowy) {
 
                                 List<Kurs> kursy = linia.getKursy();
-                                int indeks = przystanki.indexOf(przystanekPoczatkowy);
-
+                                int indeks = nazwyPrzystankow.indexOf(przystanekPoczatkowy);
                                 for (Kurs kurs : kursy) {
                                     Trasa trasa = new Trasa();
                                     RozkladJazdyKursu rozkladJazdy = kurs.getRozkladJazdy();
@@ -209,10 +213,10 @@ class Aplikacja {
         Przystanek przystanek1 = new Przystanek();
         przystanek1.setNazwa("Zielona");
         aplikacja.przystanki.add(przystanek1);
-        
+
         Kurs kurs = new Kurs();
         linia.getKursy().add(kurs);
-        
+
         kurs.setIdKursu(1);
         RozkladJazdyLinii rozkladLinii = new RozkladJazdyLinii();
         linia.setRozkladJazdy(rozkladLinii);
