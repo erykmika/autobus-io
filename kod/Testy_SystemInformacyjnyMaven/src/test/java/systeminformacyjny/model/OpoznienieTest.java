@@ -4,7 +4,6 @@
  */
 package systeminformacyjny.model;
 
-import SystemInformacyjnyLinii.Dane;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -13,10 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.BeforeEach;
-import java.util.IllegalFormatCodePointException;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -72,7 +67,7 @@ public class OpoznienieTest {
     
     @ParameterizedTest
     @CsvSource({"10", "11", "12", "13", "14"})
-    public void testSetWartoscCsv(int liczba) {
+    public void test2SetWartosc(int liczba) {
         System.out.println("setWartoscCsv");
         int wartosc = liczba;
         Opoznienie instance = new Opoznienie();

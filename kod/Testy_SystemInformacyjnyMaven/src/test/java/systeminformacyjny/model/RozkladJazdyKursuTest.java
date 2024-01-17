@@ -91,7 +91,7 @@ public class RozkladJazdyKursuTest implements TestExecutionExceptionHandler {
 
     @ParameterizedTest
     @MethodSource("provideArguments")
-    public void testMethodSource(RozkladJazdyKursu rozklady, List<Integer> godziny) {
+    public void test2GetGodziny(RozkladJazdyKursu rozklady, List<Integer> godziny) {
         System.out.println("testMethodSource");
         assertEquals(godziny, rozklady.getGodziny());
     }
@@ -103,7 +103,7 @@ public class RozkladJazdyKursuTest implements TestExecutionExceptionHandler {
     
     @Test
     @ExtendWith(RozkladJazdyKursuTest.class)
-    public void testIfThrowsException()
+    public void test2SetGodziny()
     {
         System.out.println("testIfThrowsException");
         List<Integer> pustaLista = new ArrayList<>();
@@ -112,7 +112,7 @@ public class RozkladJazdyKursuTest implements TestExecutionExceptionHandler {
     
     @ParameterizedTest
     @CsvSource({"3", "2", "0", "1"})
-    public void testGetGodzinyCsv(int liczba) {
+    public void test3GetGodziny(int liczba) {
         System.out.println("getWartoscCsv");
         assertEquals(Dane.rozklady[liczba].getGodziny(), Dane.godziny.get(liczba));
     }

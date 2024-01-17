@@ -98,7 +98,7 @@ public class RozkladJazdyLiniiTest implements TestExecutionExceptionHandler {
     @ParameterizedTest
     @Order(3)
     @MethodSource("provideArguments")
-    public void testMethodSource(RozkladJazdyLinii rozkladyLinia, List<Integer> rKurs) {
+    public void test2GetRozkladyKursow(RozkladJazdyLinii rozkladyLinia, List<Integer> rKurs) {
         System.out.println("testMethodSource");
         assertEquals(rKurs, rozkladyLinia.getRozkladyKursow());
     }
@@ -111,7 +111,7 @@ public class RozkladJazdyLiniiTest implements TestExecutionExceptionHandler {
     @Test
     @Order(5)
     @ExtendWith(RozkladJazdyLiniiTest.class)
-    public void testIfThrowsException()
+    public void test2SetRozkladyKursow()
     {
         System.out.println("testIfThrowsException");
         List<RozkladJazdyKursu> pustaLista = new ArrayList<>(); 
@@ -121,7 +121,7 @@ public class RozkladJazdyLiniiTest implements TestExecutionExceptionHandler {
     @ParameterizedTest
     @Order(4)
     @CsvSource({"1", "0"})
-    public void testGetRozkladyKursowCsv(int liczba) {
+    public void test2GetRozkladyKursow(int liczba) {
         System.out.println("getWartoscCsv");
         assertEquals(Dane.rozkladyLinia[liczba].getRozkladyKursow(), Dane.rKurs.get(liczba));
     }
