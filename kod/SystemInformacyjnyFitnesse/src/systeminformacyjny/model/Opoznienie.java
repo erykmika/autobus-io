@@ -8,7 +8,8 @@ public class Opoznienie {
         return wartosc;
     }
 
-    public void setWartosc(int wartosc) {
+    public void setWartosc(int wartosc) throws IllegalArgumentException {
+        if(wartosc < 0) throw new IllegalArgumentException();
         this.wartosc = wartosc;
     }
     
